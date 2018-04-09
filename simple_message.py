@@ -206,10 +206,10 @@ for username, user_info in users.items():
 
 # 输入和while循环
 # 输入python3
-#message=input("please unput some message")
+# message=input("please unput some message")
 # print(message)
 # 输入python2
-#message=raw_input("please unput some message")
+# message=raw_input("please unput some message")
 # 使用int来获取数值输入
 # age=raw_input("how old are you")
 # age=int(age)
@@ -220,3 +220,138 @@ while current_number < 10:
     if current_number % 2 == 0:
         continue
     print(current_number)
+
+ # 函数
+ # 定义函数
+
+
+def greet_user(username):
+    """显示简单问候语"""
+    print("Hello!" + username)
+
+
+greet_user("Tom")
+
+# 让实参变为可选参数
+
+
+def get_formatted_name(first_name, last_name, middle_name=''):
+    """返回整洁的名字"""
+    if middle_name:
+        full_name = first_name + '' + middle_name + '' + last_name
+    else:
+        full_name = first_name + '' + last_name
+    return full_name.title()
+
+
+musician = get_formatted_name('jimi', 'hendrix')
+print(musician)
+musician = get_formatted_name('john', 'mike', 'james')
+print(musician)
+
+# 传递列表
+
+
+def greet_users(names):
+    """向列表中的每位用户发送问候"""
+    for name in names:
+        mes = "Hello " + name.title() + "!"
+        print(mes)
+
+
+usernames = ['james', 'kd', 'curry']
+greet_users(usernames)
+
+# 传递任意数量的实参
+
+
+def make_pizza(*toppings):
+    """打印顾客点的所有配料"""
+    print(toppings)
+
+
+make_pizza('pepperoni')
+make_pizza('mushrooms', 'green peppers', 'extra cheese')
+
+# 使用任意数量的关键字实参
+
+
+def build_profile(first, last, **user_info):
+    """创建一个字典，其中包含我们知道的用户的一切"""
+    profile = {}
+    profile['first_name'] = first
+    profile['last_name'] = last
+    for key, value in user_info.items():
+        profile[key] = value
+    return profile
+
+
+user_profile = build_profile('albert', 'einstein', location='physics')
+print(user_profile)
+
+
+# 类
+# 创建dog类
+class Dog():
+    """一次模拟小狗的简单尝试"""
+
+    def __init__(self, name, age):
+        """初始化属性的name和age"""
+        self.name = name
+        self.age = age
+
+    def sit(self):
+        """模拟小狗蹲下"""
+        print(self.name.title() + " is now sitting.")
+
+    def roll_over(self):
+        """模拟小狗被命令时打滚"""
+        print(self.name + " rolled over!")
+
+
+# 创建类的实例
+my_dog = Dog('willie', 6)
+print("my dog name is " + my_dog.name)
+print("age is " + str(my_dog.age))
+my_dog.roll_over()
+my_dog.sit()
+
+# car类
+
+
+class Car():
+    """一次模拟汽车的简单尝试"""
+
+    def __init__(self, make, model, year):
+        """初始化描述汽车的属性"""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """返回整洁的信息描述"""
+        long_name = str(self.year) + ' ' + self.make + ' ' + self.model
+        return long_name.title()
+
+    def update_odometer(self, milleage):
+        if milleage >= self.odometer_reading:
+            self.odometer_reading = milleage
+        else:
+            print("You can not roll back an odometer!")
+
+
+my_new_car = Car('audi', 'a4', 2016)
+print(my_new_car.get_descriptive_name())
+
+
+class ElectricCar(Car):
+    """电动车的独特之处"""
+
+    def __init__(self, make, model, year):
+        """初始化父类的属性"""
+        super().__init__(make, model, year)
+
+
+my_tesla = ElectricCar('tesla', 'model s', 2016)
+print(my_tesla.get_descriptive_name())
