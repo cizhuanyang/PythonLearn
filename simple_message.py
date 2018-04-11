@@ -2,6 +2,7 @@
 # coding=utf-8
 # 字符串
 # 修改字符串的大小写
+import sys
 name = "abc lovelace"
 print(name.title())
 print(name.lower())
@@ -24,7 +25,7 @@ favorite_language = favorite_language.strip()
 print("!" + favorite_language.strip() + "!")
 # python 2 中的print语句
 name = "Eric"
-print "Hello " + name + ",would you like to learn some Python today?"
+print ("Hello " + name + ",would you like to learn some Python today?")
 # python 之禅
 import this
 
@@ -319,7 +320,7 @@ my_dog.sit()
 # car类
 
 
-class Car():
+class Car(object):
     """一次模拟汽车的简单尝试"""
 
     def __init__(self, make, model, year):
@@ -350,10 +351,10 @@ class ElectricCar(Car):
 
     def __init__(self, make, model, year):
         """初始化父类的属性"""
-        super().__init__(make, model, year)
+        super(ElectricCar, self).__init__(make, model, year)
 
 
 my_tesla = ElectricCar('tesla', 'model s', 2016)
 print(my_tesla.get_descriptive_name())
 
-# 
+print (sys.version)
