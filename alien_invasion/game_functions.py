@@ -3,6 +3,7 @@ import pygame
 
 
 def check_keydown_events(event, ship):
+	"""响应按键"""
     if event.key == pygame.K_RIGHT:
         ship.moving_right = True
     if event.key == pygame.K_LEFT:
@@ -10,6 +11,7 @@ def check_keydown_events(event, ship):
 
 
 def check_keyup_events(event, ship):
+	"""响应松开"""
     if event.key == pygame.K_RIGHT:
         ship.moving_right = False
     if event.key == pygame.K_LEFT:
