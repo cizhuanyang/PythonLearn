@@ -21,12 +21,17 @@ def run_game():
     aliens = Group()
     # 创建外星人群
     gf.create_fleet(ai_settings, screen, ship, aliens)
+    # 创建雨滴群
+    raindrops = Group()
+    gf.create_raindrops(ai_settings, screen, raindrops)
     # 开始游戏主循环
     while True:
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
         gf.update_bullets(bullets)
-        gf.update_screen(ai_settings, screen, ship, aliens, bullets)
+        gf.update_aliens(ai_settings, aliens)
+        gf.update_raindrops(ai_settings, screen,raindrops)
+        gf.update_screen(ai_settings, screen, ship, aliens, bullets, raindrops)
 
 
 run_game()
